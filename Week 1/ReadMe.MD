@@ -24,7 +24,7 @@ It tries to attempt all the below questions
 It uses the knowledge of following techniques
     <ul>
     <li>Common Table Expressions</li>
-    <li>Group By Aggregates/li>
+    <li>Group By Aggregates</li>
     <li>Windows Functions</li>
     <li>Table Joins</li>
     </ul>
