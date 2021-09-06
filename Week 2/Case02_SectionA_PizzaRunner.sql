@@ -148,11 +148,18 @@ succ_orders as (
 	from cust_orders cuso 
 	LEFT JOIN run_orders runo
 	ON cuso.order_id = runo.order_id
-	WHERE runo.pickup_time IS NOT NULL)
+	WHERE runo.pickup_time IS NOT NULL),
+pizza_nm as (
+	select 
+		CAST(pizza_id as INT) as pizza_id,
+		CAST(pizza_name as NVARCHAR(100)) as pizza_name
+	from pizza_names)
 
-select pizza_id, count(pizza_id) as NumPizzaDelivered
+select pn.pizza_name, count(so.pizza_id) as NumPizzaDelivered
 from succ_orders so
-group by pizza_id;
+JOIN pizza_nm pn
+ON so.pizza_id = pn.pizza_id
+group by pn.pizza_name;
 
 ---------------------------------------------------------------------------------------
 
@@ -176,14 +183,15 @@ cust_orders as (
 pizza_nm as (
 	select 
 		CAST(pizza_id as INT) as pizza_id,
-		pizza_name
+		CAST(pizza_name as NVARCHAR(100)) as pizza_name
 	from pizza_names)
 
-select customer_id, pn.pizza_name, count(co.pizza_id) as NumPizzaOrdered
---select *
-from cust_orders co, pizza_nm pn
-where co.pizza_id = pn.pizza_id
-group by co.customer_id, pn.pizza_name;
+select co.customer_id, pn.pizza_name, count(co.pizza_id) as NumPizzaOrdered
+from cust_orders co
+JOIN pizza_nm pn
+ON co.pizza_id = pn.pizza_id
+group by co.customer_id, pn.pizza_name
+order by co.customer_id;
 
 ---------------------------------------------------------------------------------------
 
