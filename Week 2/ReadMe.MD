@@ -5,7 +5,7 @@
 This contains all the solutions to [Case Study 2](https://8weeksqlchallenge.com/case-study-2/) of  [8 Weeks of SQL Challenge](https://8weeksqlchallenge.com) prepared and hosted by [Danny Ma](https://www.linkedin.com/in/datawithdanny/) 
 
 The following is the ER Diagram \
-![Pizza Runner](/xothers/images/PizzaRunner.png "Week 2 ERD")
+![Pizza Runner](/xothers/images/PizzaRunner.PNG "Week 2 ERD")
 
 It tries to attempt all the below questions
 ### Section A
